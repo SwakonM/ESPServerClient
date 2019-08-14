@@ -43,7 +43,7 @@ void Communication()
       zapamietanyCzas = aktualnyCzas;
       roznicaCzasu = 0;
       Serial.println("czujnik TRUE");
-      ESPClient.print("Zapal");
+      ESPClient.print(1);
       while (roznicaCzasu <= 10000UL)
       {
         if (digitalRead(4) == HIGH)
@@ -51,13 +51,12 @@ void Communication()
           zapamietanyCzas = millis();
         }
         roznicaCzasu = millis() - zapamietanyCzas;
-        Serial.println("TestA");
         delay(500);
 
       }
 
-      Serial.println("Zgaś");
-      ESPClient.println("Zgaś");
+      Serial.println("czujnik FALSE");
+      ESPClient.println(0);
       czujnik = false;
     }
   }
